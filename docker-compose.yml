@@ -1,0 +1,23 @@
+# docker-compose.yml
+
+services:
+  selenium-hub:
+    image: selenium/hub:4.23.0        # o el tag que estés usando
+    platform: linux/amd64             # 👈 fuerza arquitectura x86_64
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  selenium-chrome:
+    image: selenium/node-chrome:4.23.0
+    platform: linux/amd64             # 👈 igual aquí
+    container_name: selenium-chrome
+    shm_size: 2g
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443

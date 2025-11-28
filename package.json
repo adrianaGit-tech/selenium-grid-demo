@@ -1,0 +1,13 @@
+{
+  "name": "selenium-grid-demo",
+  "version": "1.0.0",
+  "description": "Demo de Selenium WebDriver con Selenium Grid en Docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/*.js"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.5",
+    "selenium-webdriver": "^4.38.0"
+  }
+}
